@@ -7,14 +7,14 @@ function isItem(itemCandidate) {
 }
 
 async function findItem(req, res, next, id) {
-	const item = service.findItem(id);
+	const item = await service.findItem(id);
 	if (!item) {
 		return res.status(404).json({
 			message: 'invalid item',
 			errors: { id: 'is unknown' },
 		});
 	}
-	req.item = await item;
+	req.item = item;
 	next();
 }
 

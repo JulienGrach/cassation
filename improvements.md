@@ -1,6 +1,9 @@
 ## Changes
 
-v.6 (current)
+v.7 (current)
+- fix bug: find item didn't send 404 on missing item
+
+[v.6](https://github.com/JulienGrach/cassation/commit/a51b7cf7006e0486983dd8c702d4cebfd6694eeb)
 - add mongodb docker
 - replace file system storage by mongodb storage (essentially items.service.js)
 
