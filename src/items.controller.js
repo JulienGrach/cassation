@@ -33,7 +33,6 @@ async function getAllItems(req, res, next) {
 			filter.isActive = false
 			break;
 		default:
-			filter.isActive = null
 	}
 
 	const items = await service.getAllItems(filter);

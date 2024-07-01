@@ -1,38 +1,29 @@
-const fs = require('fs').promises;
-const path = require('path');
-const itemsFilename = process.env.ITEMS_FILENAME || 'items.json';
-
-let storedItems = fs.readFile(path.join(__dirname, 'data', itemsFilename), { encoding: 'utf8' }).then(JSON.parse)
+const db = require("./database");
+const { ObjectId } = require('mongodb');
+const storedItems = db.collection('items')
 
 async function createItem(itemData = { isActive: false }) {
-	const items = await storedItems
-	const newItem = { ...itemData, id: items.length + 1, lastUpdate: new Date() };
-	storedItems = [...items, newItem];
-	return newItem;
+	const newItem = { ...itemData, lastUpdate: new Date() };
+	const { insertedId } = await storedItems.insertOne(newItem)
+	return {...newItem, _id: insertedId};
 }
 
-async function getAllItems({ isActive }) {
-	const items = await storedItems
-	return isActive === null ?
-		items : 
-		(await items).filter(_ => _.isActive == isActive);
+function getAllItems(filter) {
+	return storedItems.find(filter).toArray()
 }
 
-async function findItem(id) {
-	const items = await storedItems
-	return items.find((i) => +i.id === +id);
+function findItem(id) {
+	return storedItems.findOne({ _id: ObjectId.createFromHexString(id) });
 }
 
 async function updateItem(item, itemData = {}) {
-	const items = await storedItems
-	const updatedItem = { ...item, ...itemData, lastUpdate: new Date() };
-	storedItems = [...items.filter((i) => i.id !== item.id), updatedItem];
-	return updatedItem;
+	const updatedItem = { ...itemData, lastUpdate: new Date() };
+	const _ = await storedItems.replaceOne({ _id: item._id }, updatedItem)
+	return { ...item, ...updatedItem }
 }
 
 async function deleteItem(item) {
-	const items = await storedItems
-	storedItems = items.filter((i) => i.id !== item.id);
+	return storedItems.deleteOne({ _id: item._id })
 }
 
 module.exports = { createItem, getAllItems, findItem, updateItem, deleteItem };

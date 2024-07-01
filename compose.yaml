@@ -1,0 +1,19 @@
+services:
+
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "27017:27017"
+    volumes:
+      - '.volume/db_data:/data/db'
+      - '.volume/db_config:/data/configdb'
+
+volumes:
+  db_data:
+    driver: local
+  db_config:
+    driver: local

@@ -1,6 +1,10 @@
 ## Changes
 
-v.5 (current)
+v.6 (current)
+- add mongodb docker
+- replace file system storage by mongodb storage (essentially items.service.js)
+
+[v.5](https://github.com/JulienGrach/cassation/commit/e921c72c9e46b67f89c6d4fa855f9bfb97771f29)
 - fix technical issue: .vscode setting removed to project (introduced on v.2)
 - add changes on "improvements" markdown
 
@@ -26,8 +30,10 @@ v.5 (current)
 - Cors politic is open for all access: is it a thinking choice ? - <span style="color:red">SECURITY</span>
 - ~~Param id doesn't work due it return promise~~ - <span style="color:yellow">BUG</span>
 - ~~Prefer use an async method to read an OS file to avoid waste time~~ - <span style="color:blue">TECHNICAL</span>
-- Create / Update / Delete should change the state (will be with the mongo implementation) - <span style="color:green">IMPROVEMENT</span>
+- ~~Create / Update / Delete should change the state (will be with the mongo implementation)~~ - <span style="color:green">IMPROVEMENT</span>
 - ~~Create item doesn't create an item with isActive key.~~ - <span style="color:green">IMPROVEMENT</span>
 - Create item doesn't allow to be configured (items.controller.js/createItem => never use the itemData parameter of service function) - <span style="color:green">IMPROVEMENT ? (check lifecycle goal)</span>
 - ~~Update item allow anything to be added. Controller should secure the data integrity.~~ - <span style="color:red">SECURITY</span>
 - At the first read, errors handlers should be ok but I stay a little bit confused between server errors to send user and app errors to throw sigterm. Both of them handle flagged errors and unknown errors ... Maybe we can try to write a dedicated system isolated from server or app file. - <span style="color:blue">TECHNICAL</span>
+- Add a system to secure mongodb integrity (as mongoose or whatever to check types) - <span style="color:blue">TECHNICAL</span>
+- Add typescript - <span style="color:blue">TECHNICAL</span>
