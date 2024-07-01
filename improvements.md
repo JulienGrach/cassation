@@ -1,0 +1,9 @@
+- Server is actually using http and should use https. - <span style="color:red">security</span>
+- Cors politic is open for all access: is it a thinking choice ? - <span style="color:red">security</span>
+- ~~Param id doesn't work due it return promise~~ - <span style="color:yellow">bug</span>
+- ~~Prefer use an async method to read an OS file to avoid waste time~~ - <span style="color:blue">technical</span>
+- Create / Update / Delete should change the state (will be with the mongo implementation) - <span style="color:green">improvement</span>
+- ~~Create item doesn't create an item with isActive key.~~ - <span style="color:green">improvement</span>
+- Create item doesn't allow to be configured (items.controller.js/createItem => never use the itemData parameter of service function) - <span style="color:green">improvement ? (check lifecycle goal)</span>
+- ~~Update item allow anything to be added. Controller should secure the data integrity.~~ - <span style="color:red">security</span>
+- At the first read, errors handlers should be ok but I stay a little bit confused between server errors to send user and app errors to throw sigterm. Both of them handle flagged errors and unknown errors ... Maybe we can try to write a dedicated system isolated from server or app file. - <span style="color:blue">technical</span>
