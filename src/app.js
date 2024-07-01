@@ -42,7 +42,7 @@ const usage = `
 </h1>
 <div>
 <p>POST /items</p>
-<p>GET /items</p>
+<p>GET /items<span>/?is_active=[true|false]<span></p> 
 <p>GET /items/:id</p>
 <p>PUT /items/:id</p>
 <p>DELETE /items/:id</p>
@@ -72,6 +72,9 @@ div p {
 	color: #353535;
 	margin: 0;
 	padding: 0;
+}
+div p span {
+	opacity: 0.5;
 }
 </style>
 `;

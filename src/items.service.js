@@ -12,8 +12,10 @@ async function createItem(itemData = {}) {
 	return newItem;
 }
 
-async function getAllItems() {
-	return items;
+async function getAllItems({ isActive }) {
+	return isActive === null ?
+		items : 
+		items.filter(_ => _.isActive == isActive);
 }
 
 async function findItem(id) {
