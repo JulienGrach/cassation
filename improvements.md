@@ -1,6 +1,10 @@
 ## Changes
 
-v.7 (current)
+v.8 (current)
+- add postman documentation
+- add inline command to launch in readme
+
+[v.7](https://github.com/JulienGrach/cassation/commit/6b961bb69b9f21831749cd902831a643c4046773)
 - fix bug: find item didn't send 404 on missing item
 
 [v.6](https://github.com/JulienGrach/cassation/commit/a51b7cf7006e0486983dd8c702d4cebfd6694eeb)

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "617d398a-1587-4866-8051-d9e216d906a4",
+		"_postman_id": "dae74c7d-d7fc-4aee-a863-f61b7010e94a",
 		"name": "cassation-test",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "19626902"
@@ -22,9 +22,12 @@
 							"",
 							"    postman.setEnvironmentVariable('item1_id', responseJson.item._id)",
 							"    postman.setEnvironmentVariable('item1', JSON.stringify(responseJson.item))",
-							"});"
+							"});",
+							"",
+							"pm.execution.setNextRequest(\"create item 2\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -60,9 +63,12 @@
 							"",
 							"    postman.setEnvironmentVariable('item2_id', responseJson.item._id)",
 							"    postman.setEnvironmentVariable('item2', JSON.stringify(responseJson.item))",
-							"});"
+							"});",
+							"",
+							"pm.execution.setNextRequest(\"list created items\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -97,9 +103,52 @@
 							"",
 							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
 							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
-							"});"
+							"});",
+							"",
+							"pm.execution.setNextRequest(\"put item 1\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list updated items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"Items should exists\", function () {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.items).be.an('array').that.lengthOf.least(2)",
+							"",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
+							"});",
+							"",
+							"pm.execution.setNextRequest(\"list filtered items\");"
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -140,9 +189,12 @@
 							"",
 							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
 							"    pm.expect(responseJson.items).deep.not.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
-							"})"
+							"})",
+							"",
+							"pm.execution.setNextRequest(\"delete item 2\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -182,9 +234,12 @@
 							"",
 							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
 							"    pm.expect(responseJson.items).deep.not.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
-							"})"
+							"})",
+							"",
+							"pm.execution.setNextRequest(null);"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -212,43 +267,6 @@
 			"response": []
 		},
 		{
-			"name": "list updated items",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
-							"",
-							"pm.test(\"Items should exists\", function () {",
-							"    const responseJson = pm.response.json()",
-							"    pm.expect(responseJson.items).be.an('array').that.lengthOf.least(2)",
-							"",
-							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
-							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "localhost:3000/items",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"items"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "put item 1",
 			"event": [
 				{
@@ -263,9 +281,12 @@
 							"    pm.expect(responseJson.item?.isActive).equal(true)",
 							"",
 							"    postman.setEnvironmentVariable('item1', JSON.stringify(responseJson.item))",
-							"});"
+							"});",
+							"",
+							"pm.execution.setNextRequest(\"list updated items\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -314,9 +335,12 @@
 							"pm.test(\"Object returned\", function () {",
 							"    const responseJson = pm.response.json()",
 							"    pm.expect(responseJson.item?._id).equal(postman.getEnvironmentVariable('item2_id'))",
-							"});"
+							"});",
+							"",
+							"pm.execution.setNextRequest(\"list deleted items\");"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

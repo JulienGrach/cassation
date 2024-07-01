@@ -1,21 +1,21 @@
 {
-	"id": "871111be-ff7a-411f-8c0a-60a6ee515a0e",
+	"id": "ea122f43-8662-4e4f-afc5-243f9eeb8818",
 	"name": "cassation-test",
-	"timestamp": "2024-07-01T14:36:28.904Z",
-	"collection_id": "19626902-617d398a-1587-4866-8051-d9e216d906a4",
+	"timestamp": "2024-07-01T21:13:44.401Z",
+	"collection_id": "19626902-dae74c7d-d7fc-4aee-a863-f61b7010e94a",
 	"folder_id": 0,
 	"environment_id": "19626902-333ac7db-a685-4654-8194-57b10f786864",
-	"totalPass": 16,
+	"totalPass": 17,
 	"delay": 0,
 	"persist": true,
 	"status": "finished",
-	"startedAt": "2024-07-01T14:36:27.135Z",
+	"startedAt": "2024-07-01T21:13:43.420Z",
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "19626902-e88f9955-1533-4d61-bede-bdc171a40793",
+			"id": "6d139c37-9003-45bc-a2fd-718314ae4eab",
 			"name": "create item 1",
-			"url": "http://localhost:3000/items",
+			"url": "localhost:3000/items",
 			"time": 6,
 			"responseCode": {
 				"code": 200,
@@ -46,10 +46,10 @@
 			]
 		},
 		{
-			"id": "19626902-0b462f82-2d99-4fc6-8ddf-9ecbd018f94f",
+			"id": "cb5c2d7e-3e68-4394-a400-e122a7b71bc5",
 			"name": "create item 2",
-			"url": "http://localhost:3000/items",
-			"time": 5,
+			"url": "localhost:3000/items",
+			"time": 4,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -69,7 +69,7 @@
 				}
 			},
 			"times": [
-				5
+				4
 			],
 			"allTests": [
 				{
@@ -79,10 +79,10 @@
 			]
 		},
 		{
-			"id": "19626902-6407e63c-32dd-4104-b09e-5c9e353f909c",
+			"id": "6082c0b4-a771-4544-b479-db513225d8d2",
 			"name": "list created items",
-			"url": "http://localhost:3000/items",
-			"time": 7,
+			"url": "localhost:3000/items",
+			"time": 3,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -102,7 +102,7 @@
 				}
 			},
 			"times": [
-				7
+				3
 			],
 			"allTests": [
 				{
@@ -112,10 +112,10 @@
 			]
 		},
 		{
-			"id": "19626902-daf28127-65bf-481b-96d0-5b6311f306ae",
+			"id": "46fb5fce-f49c-4451-a91a-780fcf6d2d39",
 			"name": "put item 1",
-			"url": "http://localhost:3000/items/6682beecac4cce7f481f9a68",
-			"time": 20,
+			"url": "localhost:3000/items/66831c086e67939bb9898ac2",
+			"time": 4,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -135,7 +135,7 @@
 				}
 			},
 			"times": [
-				20
+				4
 			],
 			"allTests": [
 				{
@@ -145,10 +145,10 @@
 			]
 		},
 		{
-			"id": "19626902-0d79be87-a415-4139-88f0-ed2706dbc464",
+			"id": "22bedf3c-5f7a-4bdf-931b-3c212a170675",
 			"name": "list updated items",
-			"url": "http://localhost:3000/items",
-			"time": 5,
+			"url": "localhost:3000/items",
+			"time": 6,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -168,7 +168,7 @@
 				}
 			},
 			"times": [
-				5
+				6
 			],
 			"allTests": [
 				{
@@ -178,10 +178,10 @@
 			]
 		},
 		{
-			"id": "19626902-f6f80bec-7364-4ae1-939d-ca11ec672e1c",
+			"id": "1940cadd-0cae-43f4-be41-f05c509e34e8",
 			"name": "list filtered items",
-			"url": "http://localhost:3000/items?is_active=true",
-			"time": 7,
+			"url": "localhost:3000/items?is_active=true",
+			"time": 3,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -206,7 +206,7 @@
 				}
 			},
 			"times": [
-				7
+				3
 			],
 			"allTests": [
 				{
@@ -217,10 +217,10 @@
 			]
 		},
 		{
-			"id": "19626902-9137536f-c729-453d-9c80-6e5161751e7c",
+			"id": "17291c57-0c0b-46b3-ac5c-9b45a6fc1682",
 			"name": "delete item 2",
-			"url": "http://localhost:3000/items/6682beecac4cce7f481f9a69",
-			"time": 6,
+			"url": "localhost:3000/items/66831c086e67939bb9898ac3",
+			"time": 3,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -240,7 +240,7 @@
 				}
 			},
 			"times": [
-				6
+				3
 			],
 			"allTests": [
 				{
@@ -250,67 +250,73 @@
 			]
 		},
 		{
-			"id": "19626902-8f893e9c-397f-4a21-9ebe-d4fda730f2c6",
+			"id": "e8246100-275f-416b-9d70-bffa311c66fe",
 			"name": "list deleted items",
-			"url": "http://localhost:3000/items",
-			"time": 6,
+			"url": "localhost:3000/items",
+			"time": 3,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status code is 200": true
+				"Status code is 200": true,
+				"item2 is deleted": true
 			},
 			"testPassFailCounts": {
 				"Status code is 200": {
 					"pass": 1,
 					"fail": 0
+				},
+				"item2 is deleted": {
+					"pass": 1,
+					"fail": 0
 				}
 			},
 			"times": [
-				6
+				3
 			],
 			"allTests": [
 				{
-					"Status code is 200": true
+					"Status code is 200": true,
+					"item2 is deleted": true
 				}
 			]
 		}
 	],
 	"count": 1,
-	"totalTime": 62,
+	"totalTime": 32,
 	"collection": {
 		"requests": [
 			{
-				"id": "19626902-e88f9955-1533-4d61-bede-bdc171a40793",
+				"id": "6d139c37-9003-45bc-a2fd-718314ae4eab",
 				"method": "POST"
 			},
 			{
-				"id": "19626902-0b462f82-2d99-4fc6-8ddf-9ecbd018f94f",
+				"id": "cb5c2d7e-3e68-4394-a400-e122a7b71bc5",
 				"method": "POST"
 			},
 			{
-				"id": "19626902-6407e63c-32dd-4104-b09e-5c9e353f909c",
+				"id": "6082c0b4-a771-4544-b479-db513225d8d2",
 				"method": "GET"
 			},
 			{
-				"id": "19626902-daf28127-65bf-481b-96d0-5b6311f306ae",
+				"id": "46fb5fce-f49c-4451-a91a-780fcf6d2d39",
 				"method": "PUT"
 			},
 			{
-				"id": "19626902-0d79be87-a415-4139-88f0-ed2706dbc464",
+				"id": "22bedf3c-5f7a-4bdf-931b-3c212a170675",
 				"method": "GET"
 			},
 			{
-				"id": "19626902-f6f80bec-7364-4ae1-939d-ca11ec672e1c",
+				"id": "1940cadd-0cae-43f4-be41-f05c509e34e8",
 				"method": "GET"
 			},
 			{
-				"id": "19626902-9137536f-c729-453d-9c80-6e5161751e7c",
+				"id": "17291c57-0c0b-46b3-ac5c-9b45a6fc1682",
 				"method": "DELETE"
 			},
 			{
-				"id": "19626902-8f893e9c-397f-4a21-9ebe-d4fda730f2c6",
+				"id": "e8246100-275f-416b-9d70-bffa311c66fe",
 				"method": "GET"
 			}
 		]

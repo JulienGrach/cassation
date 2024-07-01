@@ -6,6 +6,12 @@
 - Postman
 - MongoDB (optional)
 
+# launch cli
+
+`git clone git@github.com:JulienGrach/cassation.git && cd cassation && git switch mongodb && docker compose up -d && sleep 5 && npm i && npm start`
+
+Sleep 5 to wait docker compose up. It will be better to use a wait command but for this test I guess it will sufficient
+
 # Tasks
 
 1. Fork the project into your own GitHub account (it should be kept public)
