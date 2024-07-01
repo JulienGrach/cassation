@@ -1,0 +1,318 @@
+{
+	"id": "871111be-ff7a-411f-8c0a-60a6ee515a0e",
+	"name": "cassation-test",
+	"timestamp": "2024-07-01T14:36:28.904Z",
+	"collection_id": "19626902-617d398a-1587-4866-8051-d9e216d906a4",
+	"folder_id": 0,
+	"environment_id": "19626902-333ac7db-a685-4654-8194-57b10f786864",
+	"totalPass": 16,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2024-07-01T14:36:27.135Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "19626902-e88f9955-1533-4d61-bede-bdc171a40793",
+			"name": "create item 1",
+			"url": "http://localhost:3000/items",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Object returned": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Object returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Object returned": true
+				}
+			]
+		},
+		{
+			"id": "19626902-0b462f82-2d99-4fc6-8ddf-9ecbd018f94f",
+			"name": "create item 2",
+			"url": "http://localhost:3000/items",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Object returned": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Object returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Object returned": true
+				}
+			]
+		},
+		{
+			"id": "19626902-6407e63c-32dd-4104-b09e-5c9e353f909c",
+			"name": "list created items",
+			"url": "http://localhost:3000/items",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Items should exists": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Items should exists": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Items should exists": true
+				}
+			]
+		},
+		{
+			"id": "19626902-daf28127-65bf-481b-96d0-5b6311f306ae",
+			"name": "put item 1",
+			"url": "http://localhost:3000/items/6682beecac4cce7f481f9a68",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Object returned": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Object returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Object returned": true
+				}
+			]
+		},
+		{
+			"id": "19626902-0d79be87-a415-4139-88f0-ed2706dbc464",
+			"name": "list updated items",
+			"url": "http://localhost:3000/items",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Items should exists": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Items should exists": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Items should exists": true
+				}
+			]
+		},
+		{
+			"id": "19626902-f6f80bec-7364-4ae1-939d-ca11ec672e1c",
+			"name": "list filtered items",
+			"url": "http://localhost:3000/items?is_active=true",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"All items should be active": true,
+				"item1 is active but not item2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"All items should be active": {
+					"pass": 1,
+					"fail": 0
+				},
+				"item1 is active but not item2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"All items should be active": true,
+					"item1 is active but not item2": true
+				}
+			]
+		},
+		{
+			"id": "19626902-9137536f-c729-453d-9c80-6e5161751e7c",
+			"name": "delete item 2",
+			"url": "http://localhost:3000/items/6682beecac4cce7f481f9a69",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Object returned": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Object returned": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Object returned": true
+				}
+			]
+		},
+		{
+			"id": "19626902-8f893e9c-397f-4a21-9ebe-d4fda730f2c6",
+			"name": "list deleted items",
+			"url": "http://localhost:3000/items",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 62,
+	"collection": {
+		"requests": [
+			{
+				"id": "19626902-e88f9955-1533-4d61-bede-bdc171a40793",
+				"method": "POST"
+			},
+			{
+				"id": "19626902-0b462f82-2d99-4fc6-8ddf-9ecbd018f94f",
+				"method": "POST"
+			},
+			{
+				"id": "19626902-6407e63c-32dd-4104-b09e-5c9e353f909c",
+				"method": "GET"
+			},
+			{
+				"id": "19626902-daf28127-65bf-481b-96d0-5b6311f306ae",
+				"method": "PUT"
+			},
+			{
+				"id": "19626902-0d79be87-a415-4139-88f0-ed2706dbc464",
+				"method": "GET"
+			},
+			{
+				"id": "19626902-f6f80bec-7364-4ae1-939d-ca11ec672e1c",
+				"method": "GET"
+			},
+			{
+				"id": "19626902-9137536f-c729-453d-9c80-6e5161751e7c",
+				"method": "DELETE"
+			},
+			{
+				"id": "19626902-8f893e9c-397f-4a21-9ebe-d4fda730f2c6",
+				"method": "GET"
+			}
+		]
+	}
+}

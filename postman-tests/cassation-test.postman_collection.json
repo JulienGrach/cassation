@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "617d398a-1587-4866-8051-d9e216d906a4",
+		"name": "cassation-test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19626902"
+	},
+	"item": [
+		{
+			"name": "create item 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"Object returned\", function () {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.item?.isActive).equal(false)",
+							"    pm.expect(typeof responseJson.item?._id).equal('string')",
+							"",
+							"    postman.setEnvironmentVariable('item1_id', responseJson.item._id)",
+							"    postman.setEnvironmentVariable('item1', JSON.stringify(responseJson.item))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create item 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"Object returned\", function () {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.item?.isActive).equal(false)",
+							"    pm.expect(typeof responseJson.item?._id).equal('string')",
+							"",
+							"    postman.setEnvironmentVariable('item2_id', responseJson.item._id)",
+							"    postman.setEnvironmentVariable('item2', JSON.stringify(responseJson.item))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list created items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"Items should exists\", function () {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.items).be.an('array').that.lengthOf.least(2)",
+							"",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list filtered items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"All items should be active\", () => {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.items).be.an('array').that.lengthOf.least(2)",
+							"",
+							"    responseJson.items.forEach(item => pm.expect(item.isActive, `${item._id} seems inactive`).true)",
+							"});",
+							"",
+							"pm.test(\"item1 is active but not item2\", () => {",
+							"    const responseJson = pm.response.json()",
+							"",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
+							"    pm.expect(responseJson.items).deep.not.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items?is_active=true",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					],
+					"query": [
+						{
+							"key": "is_active",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list deleted items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"item2 is deleted\", () => {",
+							"    const responseJson = pm.response.json()",
+							"",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
+							"    pm.expect(responseJson.items).deep.not.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					],
+					"query": [
+						{
+							"key": "is_active",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list updated items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"Items should exists\", function () {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.items).be.an('array').that.lengthOf.least(2)",
+							"",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item1')))",
+							"    pm.expect(responseJson.items).deep.includes(JSON.parse(postman.getEnvironmentVariable('item2')))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "put item 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"Object returned\", function () {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.item?._id).equal(postman.getEnvironmentVariable('item1_id'))",
+							"    pm.expect(responseJson.item?.isActive).equal(true)",
+							"",
+							"    postman.setEnvironmentVariable('item1', JSON.stringify(responseJson.item))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n    \"item\": {\n        \"isActive\": true\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/items/{{item1_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"{{item1_id}}"
+					],
+					"query": [
+						{
+							"key": "isActive",
+							"value": "true",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete item 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => pm.response.to.have.status(200));",
+							"",
+							"pm.test(\"Object returned\", function () {",
+							"    const responseJson = pm.response.json()",
+							"    pm.expect(responseJson.item?._id).equal(postman.getEnvironmentVariable('item2_id'))",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/items/{{item2_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"{{item2_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
