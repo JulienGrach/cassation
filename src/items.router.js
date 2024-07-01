@@ -4,7 +4,9 @@ const controller = require('./items.controller');
 
 router.param('id', controller.findItem);
 
-router.route('/').post(controller.createItem).get(controller.getAllItems);
+router.route('/')
+	.post(controller.createItem)
+	.get(controller.getAllItems);
 
 router
 	.route('/:id')
